@@ -187,7 +187,7 @@ export class Account {
                         buyValue = this._surplus;
                     }
                     let buyQuantity    = buyValue / i.current_price;
-                    console.log(`[REBALANCE ${i.symbol}]\BUY ${buyQuantity}\tat a price of ${i.current_price}\tTotal ${buyValue.toFixed(3)} USD]`);
+                    console.log(`[REBALANCE ${i.symbol}]\tBUY ${buyQuantity}\tat a price of ${i.current_price}\tTotal ${buyValue.toFixed(3)} USD]`);
 
                    let success = await svc.ftxMarketBuyOrder(`${i.symbol}/USD`,buyQuantity);
                    if(success){
@@ -196,7 +196,7 @@ export class Account {
                 }
 
                 if(this._surplus == 0){
-                    console.log(`[REBALANCE]\twas stopped because money limit was reached`);
+                    //console.log(`[REBALANCE]\twas stopped because money limit was reached`);
                     return;
                 }
             }

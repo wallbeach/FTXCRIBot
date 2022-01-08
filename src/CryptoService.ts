@@ -55,7 +55,7 @@ export class CryptoService {
       
             if (resp) {
               if (resp.success) {
-                console.log(`[MARKET ${market}] SELL order: ${size}`);
+                //console.log(`[MARKET ${market}] SELL order: ${size}`);
                 return true;
               }else{
                 console.warn(`[ALERT] Market sell order not successful ${resp.body.error}`);
@@ -82,7 +82,7 @@ export class CryptoService {
       
             if (resp) {
               if (resp.success) {
-                console.log(`[MARKET ${market}] BUY order: ${size}`);
+                //console.log(`[MARKET ${market}] BUY order: ${size}`);
                 return true;
               }else{
                 console.warn(`[ALERT] Market buy order not successful ${resp.body.error}`);
