@@ -21,7 +21,7 @@ then
     sh restart.sh
 else
     # Compile the typescript files to javascript
-    ./node_modules/.bin/tsc;
+    tsc;
 
     # Start the bot
     pm2 start ./out/index.js --name "$name" --time;

@@ -16,7 +16,7 @@ fi
 
 # Compile source code
 echo "[SETUP] Compiling source code ...";
-./node_modules/.bin/tsc;
+tsc;
 
 # Check if the bot already has a name
 if [ ! -f "bot.name" ]

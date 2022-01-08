@@ -99,7 +99,7 @@ async function startTrading() {
         dca();
     });
 
-    app.listen(3000);
+    app.listen(3005);
 
 }
 
