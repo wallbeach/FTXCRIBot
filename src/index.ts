@@ -45,20 +45,19 @@ async function dca(){
 
     await account.calcAllocation();
 
-  //  await account.savePortfolio();
+    await account.savePortfolio();
 
     await account.sellOutOfIndex();
 
     await account.logInfo();
     
-    let surplus = config.dcaValue;
+    let surplus = account.getSurplus() + config.dcaValue;
 
     account.setSurplus(surplus);
     if (surplus <= account._usdValue){
-        // first buy all underperformers and ignore treshold
         if (surplus > 1){
            // console.log(`\u001b[1;36m [Info]\tBuy Underperformers (without treshold) [${surplus} USD]`);
-            await account.buyUnderperformers(0);
+            await account.buyUnderperformers();
         }
 
         surplus = account.getSurplus();
@@ -84,7 +83,7 @@ async function showInfo(){
 
 async function startTrading() {
 
- //   await Database.open();
+    await Database.open();
 
     // Startup
     await showInfo();
@@ -95,7 +94,7 @@ async function startTrading() {
         rebalance();
     });
 
-    cron.schedule(`30 13 * * *`, function() {
+    cron.schedule(`0 12 * * *`, function() {
         dca();
     });
 

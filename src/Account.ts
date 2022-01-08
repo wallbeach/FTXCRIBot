@@ -181,7 +181,7 @@ export class Account {
         if(this._indexInstruments){
             for (const i of this._indexInstruments) {
 
-                if(i.currAllocation < i.expAllocation*(1 + treshold/100)){
+                if(i.currAllocation < i.expAllocation*(1 - treshold/100)){
                     let buyValue       = i.expValue - i.currValue;
                     if(this._surplus < buyValue){
                         buyValue = this._surplus;
@@ -238,12 +238,10 @@ export class Account {
         for (const b of this.balance){   
             Portfolio.saveBalance(b);
         }
+  
+        let index = this._indexInstruments.findIndex(obj => obj.symbol === "BTC");
+        Portfolio.savePortfolio(this._totalValue, this._indexInstruments[index].current_price);
 
-        for (const i of this._indexInstruments) {
-                
-            let index = this._indexInstruments.findIndex(obj => obj.symbol === "BTC");
-            Portfolio.savePortfolio(this._totalValue, this._indexInstruments[index].current_price);
-        }
     }
 
 }

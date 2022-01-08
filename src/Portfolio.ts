@@ -34,7 +34,7 @@ class Portfolio {
     public async savePortfolio(usdValue: number, btcprice: number) {
         await Database.execute({
             command: `
-                INSERT INTO "Balance" (
+                INSERT INTO "Portfolio" (
                     "timestamp",
                     "usdvalue",
                     "btcprice"
